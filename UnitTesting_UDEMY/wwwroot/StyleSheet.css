@@ -1,0 +1,356 @@
+﻿body {
+    font-family: "Outfit", sans-serif;
+    font-size: 18px;
+    background-color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: normal;
+}
+
+.app-container {
+    text-align: center;
+    width: 100%;
+    /*    padding: 20px;*/
+    border-radius: 10px;
+}
+
+.app-title {
+    font-size: 28px;
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 20px;
+    padding: 20px;
+}
+
+.container, .order-form {
+    flex: 1 1 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #8B5DFF;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    min-height: 250px;
+    width: 50%;
+}
+
+.name-ticker {
+    font-size: 24px;
+    color: #FFF7D1;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 20px;
+    color: #333;
+}
+
+.warning {
+    color: red;
+}
+
+.order-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.order-form input[type="number"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 200px;
+    margin-bottom: 20px;
+}
+
+.order-form button {
+    background-color: dodgerblue;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .container, .order-form {
+        flex: 1 1 100%;
+    }
+}
+
+/* Orders Page Styles */
+.orders-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+}
+
+.buy-orders, .sell-orders {
+    flex: 1;
+    background-color: #8B5DFF;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+}
+
+h3 {
+    color: #FFF7D1;
+    margin-bottom: 10px;
+}
+
+.ulist, ul {
+    list-style-type: none;
+    padding: 0;
+    color: #333;
+}
+
+.indibox {
+    background-color: #e6e5e3;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s ease;
+    text-align: start;
+    user-select: none;
+}
+
+    .indibox:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+    }
+
+    .indibox:hover {
+        background-color: #f1f1f1;
+    }
+
+/* Navbar Button */
+.navbar-button {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #FFF7D1;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    position: relative;
+}
+
+    .navbar-button:hover {
+        background-color: #563A9C;
+        color: white;
+    }
+
+.nav {
+    display: flex;
+    align-items: start;
+    padding: 0px 20px;
+    margin-bottom: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #8B5DFF;
+}
+
+/* Back button styling */
+.orders-container a img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Font Styles */
+.font-weight-400 {
+    font-weight: 400;
+}
+
+.font-weight-500 {
+    font-weight: 500;
+}
+
+.font-weight-bold {
+    font-weight: bold;
+}
+
+/* Font Sizes */
+.font-size-14 {
+    font-size: 14px;
+}
+
+.font-size-11 {
+    font-size: 11px;
+}
+
+/* Form Group Container */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+    /* Label Styling */
+    .form-group label {
+        text-align: start;
+    }
+
+/* Input Field Styling */
+.input-number {
+    width: 50%;
+}
+
+/* Button Group Styling */
+.button-group {
+    display: flex;
+    justify-content: start;
+    gap: 6px;
+}
+
+/* Buy and Sell Button Styling */
+.buy-button {
+    background-color: red !important;
+}
+
+    .buy-button:hover {
+        background-color: darkred !important;
+    }
+
+.sell-button {
+    background-color: forestgreen !important;
+}
+
+    .sell-button:hover {
+        background-color: darkgreen !important;
+    }
+
+.error-message {
+    width: 100%;
+    color: indianred;
+}
+
+/* PDF Order Table Styling */
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+    .order-table th, .order-table td {
+        padding: 8px;
+        text-align: left;
+        border: 1px solid #ccc;
+    }
+
+    .order-table th {
+        background-color: #333;
+        color: #ffffff;
+        font-weight: bold;
+    }
+
+    .order-table tr:nth-child(odd) {
+        background-color: #ffffff;
+    }
+
+    .order-table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+
+.explore-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+}
+
+.explore-list {
+    flex: 1;
+    background-color: #8B5DFF;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.explore-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    background-color: #8B5DFF;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+
+
+
+.stock-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: #333;
+}
+
+.form-label {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: aliceblue;
+}
+
+.form-input {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: white;
+    background-color: #8B5DFF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    .form-button:hover {
+        background-color: #563A9C;
+    }
+
+
+.explore-list h2 {
+    color: #333;
+}

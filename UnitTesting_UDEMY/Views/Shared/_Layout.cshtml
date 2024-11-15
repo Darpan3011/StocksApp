@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="~/favicon.ico">
+    <title>@ViewBag.Title</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="~/StyleSheet.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    <div class="app-container">
+        <h1 class="app-title">
+            <i class="fa-solid fa-money-bill-trend-up"></i>
+            Stocks
+        </h1>
+
+        <div class="nav">
+            <a class="navbar-button" asp-controller="Trade" asp-action="Index">
+                Home
+            </a>
+            <a class="navbar-button" asp-controller="Trade" asp-action="Order">
+                See all orders
+            </a>
+            <a class="navbar-button" asp-controller="Trade" asp-action="DownloadPDF">Download Orders as PDF file</a>
+            <a class="navbar-button" asp-controller="Stocks" asp-action="Explore">Explore</a>
+        </div>
+
+        @RenderBody()
+    </div>
+
+</body>
+</html>

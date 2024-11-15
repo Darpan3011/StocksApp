@@ -1,0 +1,42 @@
+﻿@model List<Dictionary<string, string>>?
+
+@{
+    ViewBag.Title = "Explore";
+}
+
+<div class="explore-container">
+    @if (Model != null && Model.Any())
+    {
+        <div class="explore-list">
+            <h2>Stocks</h2>
+            <ul class="ulist">
+                @foreach (var modell in Model)
+                {
+                    <a class="indibox" style="display:flex; flex-direction:column; cursor:pointer" onclick="loadCompanyProfile('@modell["displaySymbol"]')">
+                        <span style="font-weight:800">@modell["description"]</span>
+                        <span>(@modell["displaySymbol"])</span>
+                    </a>
+                }
+            </ul>
+        </div>
+    } else
+    {
+        <h3>No Stocks Available</h3>
+    }
+    <div class="explore-content" id="companyProfileContainer">
+        <h4 style="width:100%; text-align:center">Select company to display details</h4>
+        @await Component.InvokeAsync("CompanyProfile", new
+            {
+                stockSymbol = ViewBag.stock
+            })
+    </div>
+</div>
+
+
+<script>
+    async function loadCompanyProfile(stockSymbol) {
+        const response = await fetch(`/Stocks/LoadCompanyProfile?stockSymbol=${stockSymbol}`);
+        const profileHtml = await response.text();
+        document.getElementById('companyProfileContainer').innerHTML = profileHtml;
+    }
+</script>

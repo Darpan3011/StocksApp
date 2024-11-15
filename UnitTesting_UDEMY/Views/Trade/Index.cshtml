@@ -1,0 +1,74 @@
+﻿@model Entities.StockTrade
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="stock-search">
+    <form asp-action="Index" asp-controller="Trade" method="get" class="stock-form">
+        <label for="symbol" class="form-label">Enter Stock Symbol:</label>
+        <input type="text" id="symbol" name="symbol" value="@ViewBag.Symbol" class="form-input" />
+        <button type="submit" class="form-button">Search</button>
+    </form>
+
+</div>
+
+<div class="content-wrapper">
+
+    @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+    {
+        <div class="error-message">@ViewBag.ErrorMessage</div>
+    }
+
+    else
+    {
+        <div class="container">
+            <h2 class="name-ticker">@Model.StockName (@Model.StockSymbol)</h2>
+            <h2 class="price" id="price">$ @Model.Price</h2>
+        </div>
+
+        <form asp-action="Trade" asp-controller="Trade" method="post" class="order-form">
+            <input type="hidden" asp-for="StockName" />
+            <input type="hidden" asp-for="StockSymbol" />
+            <input type="hidden" asp-for="Price" id="priceInput" />
+
+            <div class="form-group">
+                <label asp-for="Quantity" style="color:#FFF7D1"></label>
+                <input type="number" asp-for="Quantity" class="input-number" placeholder="Quantity" />
+            </div>
+
+            <div class="button-group">
+                <button type="submit" asp-action="BuyOrder" asp-controller="Trade" class="buy-button">Buy Order</button>
+                <button type="submit" asp-action="SellOrder" asp-controller="Trade" class="sell-button">Sell Order</button>
+            </div>
+
+            <div asp-validation-summary="All" class="warning" class="text-danger"></div>
+        </form>
+    }
+</div>
+
+<script>
+    const socket = new WebSocket('wss://ws.finnhub.io?token=cs7mg2hr01qtqcar6bogcs7mg2hr01qtqcar6bp0');
+    const priceElement = document.getElementById("price");
+    const priceInput = document.getElementById("priceInput");
+
+    socket.addEventListener("open", () => {
+        socket.send(JSON.stringify({ type: 'subscribe', symbol: '@Model.StockSymbol' }));
+        console.log('WebSocket connected.');
+    });
+
+    socket.addEventListener("message", (event) => {
+        const price = JSON.parse(event.data)?.data?.[0]?.p;
+        if (price) {
+            priceElement.textContent = `$ ${price.toFixed(2)}`;
+            priceInput.value = price.toFixed(2);
+            console.log('Updated price:', price.toFixed(2));
+        }
+    });
+
+    socket.addEventListener("close", () => console.log('WebSocket disconnected.'));
+    socket.addEventListener("error", (error) => console.error('WebSocket error:', error));
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.21.0/jquery.validate.min.js" integrity="sha512-KFHXdr2oObHKI9w4Hv1XPKc898mE4kgYx58oqsc/JqqdLMDI4YjOLzom+EMlW8HFUd0QfjfAvxSL6sEq/a42fQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js" integrity="sha512-xq+Vm8jC94ynOikewaQXMEkJIOBp7iArs3IhFWSWdRT3Pq8wFz46p+ZDFAR7kHnSFf+zUv52B3prRYnbDRdgog==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

@@ -1,0 +1,59 @@
+﻿@model UnitTesting_UDEMY.Models.Orders
+
+@{
+    ViewBag.Title = "Orders";
+}
+
+<div class="orders-container">
+    <div class="buy-orders">
+        <h3>Buy Orders</h3>
+        @if (Model.BuyOrders != null)
+        {
+            <ul class="ulist">
+                @foreach (var order in Model.BuyOrders)
+                {
+                    <li class="indibox">
+                        <span class="font-weight-500">@order.StockName (@order.StockSymbol)</span><br />
+                        <span class="font-weight-400 font-size-14">
+                            <span class="font-weight-bold">@order.Quantity</span> shares at <span class="font-weight-bold">$ @order.Price</span>
+                        </span><br />
+                        <span class="font-weight-400 font-size-14">
+                            Trade Amount: <span class="font-weight-bold">$ @order.TradeAmount</span>
+                        </span><br />
+                        <span class="font-weight-400 font-size-11">@order.DateAndTimeOfOrder.ToString("dd MMMM yyyy hh:mm tt")</span>
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>No buy orders found.</p>
+        }
+    </div>
+
+    <div class="sell-orders">
+        <h3>Sell Orders</h3>
+        @if (Model.SellOrders != null && Model.SellOrders.Any())
+        {
+            <ul>
+                @foreach (var order in Model.SellOrders)
+                {
+                    <li class="indibox">
+                        <span class="font-weight-500">@order.StockName (@order.StockSymbol)</span><br />
+                        <span class="font-weight-400 font-size-14">
+                            <span class="font-weight-bold">@order.Quantity</span> shares at <span class="font-weight-bold">$ @order.Price</span>
+                        </span><br />
+                        <span class="font-weight-400 font-size-14">
+                            Trade Amount: <span class="font-weight-bold">$ @order.TradeAmount</span>
+                        </span><br />
+                        <span class="font-weight-400 font-size-11">@order.DateAndTimeOfOrder.ToString("dd MMMM yyyy hh:mm tt")</span>
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>No sell orders found.</p>
+        }
+    </div>
+</div>

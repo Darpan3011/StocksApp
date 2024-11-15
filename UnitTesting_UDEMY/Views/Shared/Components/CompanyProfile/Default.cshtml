@@ -1,0 +1,10 @@
+﻿@model Dictionary<string, object>
+
+<img src="@Model["logo"]" width="200" style="border-radius:10px;" />
+<h1 style="color:#333;">@Model["name"] (@Model["ticker"])</h1>
+<span>Industry: <span style="background-color:lightgray; padding:2px 4px; border-radius:4px; color:#333;">@Model["finnhubIndustry"]</span></span>
+
+<h3 style="color:#333">Exchange: @Model["exchange"]</h3>
+
+<h1 style="color:#333;">$ @Model["price"]</h1>
+<a href="~/Trade/Index/@Model["ticker"]" style="text-decoration:none; background-color:lightgrey; padding:4px 6px; color:#333; border-radius:4px">Trade Now</a>
