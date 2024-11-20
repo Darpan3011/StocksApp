@@ -3,6 +3,7 @@ using ServiceContracts;
 using Services;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+using UnitTesting_UDEMY.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,6 +42,10 @@ app.UseSerilogRequestLogging();
 if (builder.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
+} else
+{
+    app.UseExceptionHandler("/Error");
+    app.UseExceptionMiddleware();
 }
 
 // to see additional information related to http requests

@@ -19,17 +19,19 @@
             <i class="fa-solid fa-money-bill-trend-up"></i>
             Stocks
         </h1>
-
-        <div class="nav">
-            <a class="navbar-button" asp-controller="Trade" asp-action="Index">
-                Home
-            </a>
-            <a class="navbar-button" asp-controller="Trade" asp-action="Order">
-                See all orders
-            </a>
-            <a class="navbar-button" asp-controller="Trade" asp-action="DownloadPDF">Download Orders as PDF file</a>
-            <a class="navbar-button" asp-controller="Stocks" asp-action="Explore">Explore</a>
-        </div>
+        @if (ViewBag.Title != "Error Page")
+        {
+            <div class="nav">
+                <a class="navbar-button" asp-controller="Trade" asp-action="Index">
+                    Home
+                </a>
+                <a class="navbar-button" asp-controller="Stocks" asp-action="Explore">Explore</a>
+                <a class="navbar-button" asp-controller="Trade" asp-action="Order">
+                    See all orders
+                </a>
+                <a class="navbar-button" asp-controller="Trade" asp-action="DownloadPDF">Download Orders as PDF file</a>
+            </div>
+        }
 
         @RenderBody()
     </div>

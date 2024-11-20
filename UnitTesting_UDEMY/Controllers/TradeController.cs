@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Rotativa.AspNetCore;
 using ServiceContracts;
 using ServiceContracts.DTO;
+using UnitTesting_UDEMY.Filters;
 using UnitTesting_UDEMY.Models;
 
 namespace UnitTesting_UDEMY.Controllers
@@ -54,19 +55,20 @@ namespace UnitTesting_UDEMY.Controllers
 
         [HttpPost]
         [Route("BuyOrder")]
+        [TypeFilter(typeof(ActionFilterForModelValidation))]
         public async Task<IActionResult> BuyOrder(StockTrade stockTrade)
         {
             _logger.LogInformation($"Buy Order Request {stockTrade}");
-            if (!ModelState.IsValid)
-            {
-                foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
-                {
-                    Console.WriteLine(error.ErrorMessage);
-                }
+            //if (!ModelState.IsValid)
+            //{
+            //    foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+            //    {
+            //        Console.WriteLine(error.ErrorMessage);
+            //    }
 
-                ViewBag.ErrorMessage = "There was an error with your input. Please correct it and try again.";
-                return View("Index", stockTrade);
-            }
+            //    ViewBag.ErrorMessage = "There was an error with your input. Please correct it and try again.";
+            //    return View("Index", stockTrade);
+            //}
             BuyOrderRequest buyOrderRequest = stockTrade.ToBuyOrderRequest();
             await _stocksService.CreateBuyOrder(buyOrderRequest);
             _logger.LogInformation($"Ending Buy Order Request {stockTrade}");
@@ -75,19 +77,20 @@ namespace UnitTesting_UDEMY.Controllers
 
         [HttpPost]
         [Route("SellOrder")]
+        [TypeFilter(typeof(ActionFilterForModelValidation))]
         public async Task<IActionResult> SellOrder(StockTrade stockTrade)
         {
             _logger.LogInformation($"Sell Order Request {stockTrade}");
-            if (!ModelState.IsValid)
-            {
-                foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
-                {
-                    Console.WriteLine(error.ErrorMessage);
-                }
+            //if (!ModelState.IsValid)
+            //{
+            //    foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+            //    {
+            //        Console.WriteLine(error.ErrorMessage);
+            //    }
 
-                ViewBag.ErrorMessage = "There was an error with your input. Please correct it and try again.";
-                return View("Index", stockTrade);
-            }
+            //    ViewBag.ErrorMessage = "There was an error with your input. Please correct it and try again.";
+            //    return View("Index", stockTrade);
+            //}
             SellOrderRequest sellOrderRequest = stockTrade.ToSellOrderRequest();
             sellOrderRequest.DateAndTimeOfOrder = DateTime.Now;
             await _stocksService.CreateSellOrder(sellOrderRequest);

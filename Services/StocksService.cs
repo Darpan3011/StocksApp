@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using ServiceContracts;
 using ServiceContracts.DTO;
 using Entities;
+using Exceptions;
 
 namespace Services
 {
@@ -23,22 +24,22 @@ namespace Services
 
             if (string.IsNullOrWhiteSpace(buyOrderRequest.StockSymbol))
             {
-                throw new ArgumentException("Stock symbol cannot be null or empty.", nameof(buyOrderRequest.StockSymbol));
+                throw new ArguementExceptionError("Stock symbol cannot be null or empty.", nameof(buyOrderRequest.StockSymbol));
             }
 
             if (buyOrderRequest.Quantity < 1 || buyOrderRequest.Quantity > 100000)
             {
-                throw new ArgumentException("Quantity should be between 1 and 100000.", nameof(buyOrderRequest.Quantity));
+                throw new ArguementExceptionError("Quantity should be between 1 and 100000.", nameof(buyOrderRequest.Quantity));
             }
 
             if (buyOrderRequest.Price < 1 || buyOrderRequest.Price > 100000)
             {
-                throw new ArgumentException("Price should be between 1 and 100000.", nameof(buyOrderRequest.Price));
+                throw new ArguementExceptionError("Price should be between 1 and 100000.", nameof(buyOrderRequest.Price));
             }
 
             if (buyOrderRequest.DateAndTimeOfOrder < new DateTime(2000, 1, 1))
             {
-                throw new ArgumentException("Date and Time of Order should be on or after 2000-01-01.", nameof(buyOrderRequest.DateAndTimeOfOrder));
+                throw new ArguementExceptionError("Date and Time of Order should be on or after 2000-01-01.", nameof(buyOrderRequest.DateAndTimeOfOrder));
             }
 
             BuyOrder buyOrder = buyOrderRequest.toBuyOrder();

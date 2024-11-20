@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Servic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{566EBE99-87EA-45A0-BEB8-984F8A816077}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exceptions", "Exceptions\Exceptions.csproj", "{A2375D99-A8DF-4351-A4B5-21CBB16C1502}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{566EBE99-87EA-45A0-BEB8-984F8A816077}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{566EBE99-87EA-45A0-BEB8-984F8A816077}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{566EBE99-87EA-45A0-BEB8-984F8A816077}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2375D99-A8DF-4351-A4B5-21CBB16C1502}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2375D99-A8DF-4351-A4B5-21CBB16C1502}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2375D99-A8DF-4351-A4B5-21CBB16C1502}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2375D99-A8DF-4351-A4B5-21CBB16C1502}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
